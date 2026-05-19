@@ -1,4 +1,4 @@
-// src/core/types.ts
+// src/types.ts
 //
 // Made with ❤️ by Maysara.
 
@@ -7,51 +7,51 @@
 // ╔════════════════════════════════════════ TYPE ════════════════════════════════════════╗
 
     export interface CommandConfig<T = ParsedCommand> {
-        name            : string;
-        aliases?        : string[];
-        description?    : string;
-        args?           : ArgumentConfig[];
-        options?        : OptionConfig[];
-        action?         : (parsed: T) => void | Promise<void>;
-        examples?       : string[];
+        name                 : string;
+        aliases?             : string[];
+        description?         : string;
+        args?                : ArgumentConfig[];
+        options?             : OptionConfig[];
+        action?              : (parsed: T) => void | Promise<void>;
+        examples?            : string[];
 
         allowDynamicArgs?    : boolean;
         allowDynamicOptions? : boolean;
     }
 
     export interface ArgumentConfig {
-        name            : string;
-        description?    : string;
-        required?       : boolean;
-        validate?       : (value: string) => boolean | string;
-        default?        : string;
+        name                 : string;
+        description?         : string;
+        required?            : boolean;
+        validate?            : (value: string) => boolean | string;
+        default?             : string;
     }
 
     export interface OptionConfig {
-        name            : string;
-        flag            : string;
-        aliases?        : string[];
-        description?    : string;
-        type?           : 'boolean' | 'string' | 'number';
-        default?        : string | boolean | number;
-        required?       : boolean;
-        validate?       : (value: string | boolean | number) => boolean | string;
+        name                 : string;
+        flag                 : string;
+        aliases?             : string[];
+        description?         : string;
+        type?                : 'boolean' | 'string' | 'number';
+        default?             : string | boolean | number;
+        required?            : boolean;
+        validate?            : (value: string | boolean | number) => boolean | string;
     }
 
     export interface CLIConfig {
-        name            : string;
-        version         : string;
-        description?    : string;
-        commands?       : CommandConfig[];
-        globalOptions?  : OptionConfig[];
+        name                 : string;
+        version              : string;
+        description?         : string;
+        commands?            : CommandConfig[];
+        globalOptions?       : OptionConfig[];
     }
 
     export interface ParsedCommand {
-        args            : Record<string, string>;
-        options         : Record<string, string | boolean | number>;
+        args                 : Record<string, string>;
+        options              : Record<string, string | boolean | number>;
 
-        dynamicArgs?    : string[];
-        dynamicOptions? : Record<string, string | boolean>;
+        dynamicArgs?         : string[];
+        dynamicOptions?      : Record<string, string | boolean>;
     }
 
 // ╚══════════════════════════════════════════════════════════════════════════════════════╝
@@ -61,10 +61,11 @@
 // ╔═══════════════════════════════════════ ERRORS ═══════════════════════════════════════╗
 
     export class CLIError extends Error {
-        constructor(message: string, public code: string = 'CLI_ERROR') {
+        constructor(message: string, public code = 'CLI_ERROR') {
             super(message);
             this.name = 'CLIError';
-            Error.captureStackTrace?.(this, CLIError);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (Error as any).captureStackTrace?.(this, CLIError);
         }
     }
 

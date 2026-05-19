@@ -23,13 +23,13 @@
                 this.position = 0;
 
                 const result: { command?: string; options: Record<string, string | boolean>; positional: string[] } = {
-                options: {},
-                positional: []
+                    options: {},
+                    positional: []
                 };
 
                 // First token might be a command
                 if (this.hasNext() && !this.peek().startsWith('-')) {
-                result.command = this.consume();
+                    result.command = this.consume();
                 }
 
                 while (this.hasNext()) {

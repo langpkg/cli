@@ -6,8 +6,9 @@
 
 // ╔════════════════════════════════════════ PACK ════════════════════════════════════════╗
 
-    import { ArgumentParser }   from './parser';
-    import * as types           from '../types';
+    import { ArgumentParser }    from './parser';
+    import * as types            from '../types';
+    import process               from 'process';
 
 // ╚══════════════════════════════════════════════════════════════════════════════════════╝
 
@@ -67,7 +68,7 @@
 
                     // Check if -v/--version should be handled as version (only if command doesn't use -v)
                     const commandUsesV = command.options?.some(opt =>
-                        opt.flag === '-v' || opt.aliases?.includes('-v')
+                    opt.flag === '-v' || opt.aliases?.includes('-v')
                     );
 
                     if (!commandUsesV && (parsed.options.version || parsed.options.v)) {
@@ -158,7 +159,7 @@
                     if (token.startsWith('--')) {
                         const [key, value] = token.slice(2).split('=');
                         const isKnownOption = command?.options?.some(o =>
-                            o.flag === `--${key}` || o.name === key || o.aliases?.includes(`--${key}`)
+                        o.flag === `--${key}` || o.name === key || o.aliases?.includes(`--${key}`)
                         );
 
                         if (isKnownOption) {
@@ -188,7 +189,7 @@
                         // Check if all flags are known
                         for (const flag of flags) {
                             const isKnownOption = command?.options?.some(o =>
-                                o.flag === `-${flag}` || o.aliases?.includes(`-${flag}`)
+                            o.flag === `-${flag}` || o.aliases?.includes(`-${flag}`)
                             );
                             if (!isKnownOption) {
                                 allKnown = false;
@@ -241,10 +242,10 @@
                 const knownOptionKeys = new Set<string>();
                 if (command.options) {
                     for (const opt of command.options) {
-                            knownOptionKeys.add(opt.name);
-                            knownOptionKeys.add(opt.flag.replace(/^-+/, ''));
-                            if (opt.aliases) {
-                                opt.aliases.forEach(a => knownOptionKeys.add(a.replace(/^-+/, '')));
+                        knownOptionKeys.add(opt.name);
+                        knownOptionKeys.add(opt.flag.replace(/^-+/, ''));
+                        if (opt.aliases) {
+                            opt.aliases.forEach(a => knownOptionKeys.add(a.replace(/^-+/, '')));
                         }
                     }
                 }
@@ -267,10 +268,10 @@
 
                         // Validate
                         if (argConfig.validate) {
-                        const validation = argConfig.validate(value);
+                            const validation = argConfig.validate(value);
                             if (validation !== true) {
                                 throw new types.ValidationError(
-                                typeof validation === 'string'
+                                    typeof validation === 'string'
                                     ? validation
                                     : `Invalid value for argument '${argConfig.name}': ${value}`
                                 );
@@ -307,7 +308,7 @@
                             const validation = optConfig.validate(converted);
                             if (validation !== true) {
                                 throw new types.ValidationError(
-                                typeof validation === 'string'
+                                    typeof validation === 'string'
                                     ? validation
                                     : `Invalid value for option '${optConfig.name}': ${converted}`
                                 );
@@ -370,7 +371,7 @@
                     const dynamicArgs: string[] = [];
                     for (let i = dynamicArgsStart; i < positional.length; i++) {
                         if (!optionIndices.has(i)) {
-                        dynamicArgs.push(positional[i]);
+                            dynamicArgs.push(positional[i]);
                         }
                     }
                     result.dynamicArgs = dynamicArgs;
@@ -485,7 +486,7 @@
                 let usage = `${this.config.name} ${command.name}`;
                 if (command.args) {
                     usage += ' ' + command.args.map(a =>
-                        a.required !== false ? `<${a.name}>` : `[${a.name}]`
+                    a.required !== false ? `<${a.name}>` : `[${a.name}]`
                     ).join(' ');
                 }
 

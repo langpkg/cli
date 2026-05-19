@@ -1,4 +1,4 @@
-<!-- ╔══════════════════════════════ BEG ══════════════════════════════╗ -->
+<!-- ╔═══════════════════════════ BEG ════════════════════════════╗ -->
 
 <br>
 <div align="center">
@@ -13,9 +13,8 @@
         and validated command-line applications.
         <br>
     </p>
-    <img data="version" src="https://img.shields.io/badge/v-0.0.1-black"/>
+    <img data="version" src="https://img.shields.io/badge/v-0.0.2-black"/>
     <a href="https://github.com/langpkg"><img src="https://img.shields.io/badge/@-langpkg-black"/></a>
-    <img src="https://img.shields.io/badge/zero-dependencies-blue"/>
     <br>
     <img src="https://img.shields.io/badge/coverage-100%25-brightgreen" alt="Test Coverage" />
     <img src="https://img.shields.io/github/issues/langpkg/cli?style=flat" alt="Github Repo Issues" />
@@ -23,20 +22,18 @@
 </div>
 <br>
 
-<!-- ╚═════════════════════════════════════════════════════════════════╝ -->
-
-<!-- ╚═════════════════════════════════════════════════════════════════╝ -->
+<!-- ╚════════════════════════════════════════════════════════════╝ -->
 
 
 
-
-<!-- ╔══════════════════════════════ DOC ══════════════════════════════╗ -->
+<!-- ╔═══════════════════════════ DOC ════════════════════════════╗ -->
 
 - ## Quick Start 🔥
 
+    > Install [pkg](https://github.com/langpkg/pkg) first.
 
     ```bash
-    bun add @langpkg/cli
+    pkg i @langpkg/cli
     ```
 
     ```ts
@@ -334,14 +331,13 @@
         })
         ```
 
-    <br>
-
-<!-- ╚═════════════════════════════════════════════════════════════════╝ -->
+<!-- ╚════════════════════════════════════════════════════════════╝ -->
 
 
 
-<!-- ╔══════════════════════════════ END ══════════════════════════════╗ -->
+<!-- ╔═══════════════════════════ END ════════════════════════════╗ -->
 
+<br>
 <br>
 
 ---
@@ -350,4 +346,4 @@
     <a href="https://github.com/maysara-elshewehy"><img src="https://img.shields.io/badge/by-Maysara-black"/></a>
 </div>
 
-<!-- ╚═════════════════════════════════════════════════════════════════╝ -->
+<!-- ╚════════════════════════════════════════════════════════════╝ -->
